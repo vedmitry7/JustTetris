@@ -2,7 +2,7 @@ package com.vedmitry7.stages;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
-import com.vedmitry7.actors.menu.Figure;
+import com.vedmitry7.actors.Figure;
 import com.vedmitry7.utils.Constants;
 
 

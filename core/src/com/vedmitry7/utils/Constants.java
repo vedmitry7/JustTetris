@@ -3,12 +3,12 @@ package com.vedmitry7.utils;
 
 public class Constants {
 
-    public static final int APP_WIDTH = 155;
-    public static final int APP_HEIGHT = 320;
+    public static final int APP_WIDTH = 480;
+    public static final int APP_HEIGHT = 990;
 
-    public static final int GAME_FIELD_HEIGHT = 310;
-    public static final int GAME_FIELD_WIDTH = 160;
-    public static final float BLOCK_SIZE = 15.5f;
+    public static final int GAME_FIELD_HEIGHT = 960;
+    public static final int GAME_FIELD_WIDTH = 480;
+    public static final float BLOCK_SIZE = 48f;
 
 
     public static final String PREFERENCE_NAME = "prefs";

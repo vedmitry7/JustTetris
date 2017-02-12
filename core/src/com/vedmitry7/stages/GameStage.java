@@ -2,16 +2,19 @@ package com.vedmitry7.stages;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.vedmitry7.actors.menu.BlockDrawer;
-import com.vedmitry7.actors.menu.Field;
-import com.vedmitry7.actors.menu.Figure;
+import com.vedmitry7.actors.BlockDrawer;
+import com.vedmitry7.actors.Field;
+import com.vedmitry7.actors.Figure;
+import com.vedmitry7.actors.GameInfo;
+import com.vedmitry7.actors.LineDrawer;
+import com.vedmitry7.actors.menu.PauseButton;
 import com.vedmitry7.utils.Constants;
 
 
@@ -20,14 +23,9 @@ public class GameStage extends Stage {
     private static final int VIEWPORT_WIDTH = Constants.APP_WIDTH;
     private static final int VIEWPORT_HEIGHT = Constants.APP_HEIGHT;
 
-    ImageButton button;
-    TextureAtlas textureAtlas;
-    Skin skin;
     Figure figure;
     Field gameField;
     BlockDrawer blockDraver;
-    Viewport viewport;
-    BitmapFont font;
 
     private OrthographicCamera camera;
 
@@ -37,18 +35,20 @@ public class GameStage extends Stage {
       //  setUpCamera();
         initGameObject();
         initButton();
-        initInfo();
+
     }
 
-    private void initInfo() {
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/magneto-bold.ttf"));
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 75;
-        font = generator.generateFont(parameter);
-    }
 
     private void initButton() {
+        PauseButton pauseButton = new PauseButton();
+        addActor(pauseButton);
 
+        Texture texture = new Texture(Gdx.files.internal("pause_button.png"));
+        Drawable drawable = new TextureRegionDrawable(new TextureRegion(texture));
+        ImageButton button = new ImageButton(drawable);
+        button.setBounds(0,0,60,60);
+        button.setPosition(480/2-15,960-15);
+        addActor(button);
     }
 
     private void initGameObject() {
@@ -58,9 +58,14 @@ public class GameStage extends Stage {
 
         Gdx.input.setInputProcessor(new Controller(figure));
 
+        GameInfo gameInfo = new GameInfo(gameField, figure);
+
+        LineDrawer lineDrawer = new LineDrawer();
         addActor(gameField);
         addActor(figure);
+        addActor(gameInfo);
 
+       // addActor(lineDrawer);
     }
 
     private void setUpCamera() {
@@ -72,9 +77,6 @@ public class GameStage extends Stage {
     @Override
     public void draw() {
         super.draw();
-        this.getBatch().begin();
-        font.draw(this.getBatch(),"Score: 0",5,250);
-        this.getBatch().end();
     }
 
     @Override
@@ -82,6 +84,4 @@ public class GameStage extends Stage {
         super.act(delta);
     }
 
-    public void resize() {
-    }
 }

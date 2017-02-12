@@ -1,4 +1,4 @@
-package com.vedmitry7.actors.menu;
+package com.vedmitry7.actors;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;

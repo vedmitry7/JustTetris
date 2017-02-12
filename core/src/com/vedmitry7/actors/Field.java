@@ -1,4 +1,4 @@
-package com.vedmitry7.actors.menu;
+package com.vedmitry7.actors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
@@ -37,6 +37,8 @@ public class Field extends Actor {
             }
         else
             fillFromPrefs();
+        matrix[19][9] = 101;
+        matrix[0][0] = 101;
     }
 
     int getScore() {

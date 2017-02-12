@@ -18,7 +18,7 @@ public class GameScreen implements Screen {
     private static final int VIEWPORT_HEIGHT = Constants.APP_HEIGHT;
 
     private GameStage stage;
-    Viewport viewport;
+    private Viewport viewport;
 
     private OrthographicCamera camera;
 

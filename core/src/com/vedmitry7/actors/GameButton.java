@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.vedmitry7.actors.menu;
+package com.vedmitry7.actors;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
