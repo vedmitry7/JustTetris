@@ -1,0 +1,54 @@
+
+Main_menu.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+main_menu_img
+  rotate: false
+  xy: 0, 160
+  size: 766, 90
+  orig: 766, 90
+  offset: 0, 0
+  index: -1
+logo_low
+  rotate: false
+  xy: 0, 76
+  size: 474, 84
+  orig: 474, 84
+  offset: 0, 0
+  index: -1
+logo
+  rotate: false
+  xy: 0, 0
+  size: 418, 76
+  orig: 418, 76
+  offset: 0, 0
+  index: -1
+play
+  rotate: false
+  xy: 474, 70
+  size: 180, 90
+  orig: 180, 90
+  offset: 0, 0
+  index: -1
+play_pressed
+  rotate: false
+  xy: 766, 162
+  size: 173, 88
+  orig: 173, 88
+  offset: 0, 0
+  index: -1
+exit
+  rotate: false
+  xy: 654, 85
+  size: 168, 75
+  orig: 168, 75
+  offset: 0, 0
+  index: -1
+exit_pressed
+  rotate: false
+  xy: 654, 12
+  size: 163, 73
+  orig: 163, 73
+  offset: 0, 0
+  index: -1
