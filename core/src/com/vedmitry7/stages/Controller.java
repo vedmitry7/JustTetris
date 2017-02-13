@@ -2,11 +2,13 @@ package com.vedmitry7.stages;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.vedmitry7.actors.Figure;
 import com.vedmitry7.utils.Constants;
 
 
-class Controller implements InputProcessor {
+class Controller extends ClickListener implements InputProcessor {
 
     private boolean droping, wasDragged;
 
@@ -31,6 +33,12 @@ class Controller implements InputProcessor {
             System.out.println(figure.isGameOver());
 
             return false;
+    }
+
+    @Override
+    public void clicked(InputEvent event, float x, float y) {
+        super.clicked(event, x, y);
+        System.out.println("cliCK");
     }
 
     @Override

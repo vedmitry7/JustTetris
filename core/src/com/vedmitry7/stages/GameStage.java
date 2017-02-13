@@ -26,6 +26,7 @@ public class GameStage extends Stage {
     Figure figure;
     Field gameField;
     BlockDrawer blockDraver;
+    TextureRegion region;
 
     private OrthographicCamera camera;
 
@@ -45,6 +46,7 @@ public class GameStage extends Stage {
 
         Texture texture = new Texture(Gdx.files.internal("pause_button.png"));
         Drawable drawable = new TextureRegionDrawable(new TextureRegion(texture));
+        region = new TextureRegion(texture);
         ImageButton button = new ImageButton(drawable);
         button.setBounds(0,0,60,60);
         button.setPosition(480/2-15,960-15);

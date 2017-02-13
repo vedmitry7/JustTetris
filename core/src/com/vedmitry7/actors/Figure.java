@@ -35,9 +35,13 @@ public class Figure extends Actor {
         // System.out.println("constructor");
         this.field = f;
         this.blockDrawer = bd;
+        nextShape = random.nextInt(Constants.SHAPES.length);
         nextFigure();
         currentTimeToFrame = 0;
-        nextShape = random.nextInt(Constants.SHAPES.length);
+    }
+
+    public int getNextShape() {
+        return nextShape;
     }
 
     public boolean isDroping() {
@@ -59,7 +63,8 @@ public class Figure extends Actor {
         x = 4;
         y = 0;
         figure = new ArrayList<Block>();
-        type = random.nextInt(Constants.SHAPES.length);
+        type = nextShape;
+        nextShape = random.nextInt(Constants.SHAPES.length);
         size = Constants.SHAPES[type][4][0];
         color = Constants.SHAPES[type][4][1];
         if (size == 4) y = -2;
