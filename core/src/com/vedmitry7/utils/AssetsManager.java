@@ -26,12 +26,12 @@ public class AssetsManager {
     public static void loadAssets() {
         textureAtlas = new TextureAtlas("Main_menu.pack");
 
-        texturesMap.put(0, new TextureRegion(new Texture(Gdx.files.internal("blocks/i_brick.png"))));
-        texturesMap.put(1, new TextureRegion(new Texture(Gdx.files.internal("blocks/o_brick.png"))));
-        texturesMap.put(2, new TextureRegion(new Texture(Gdx.files.internal("blocks/j_brick.png"))));
-        texturesMap.put(3, new TextureRegion(new Texture(Gdx.files.internal("blocks/L_brick.png"))));
-        texturesMap.put(4, new TextureRegion(new Texture(Gdx.files.internal("blocks/s_brick.png"))));
-        texturesMap.put(5, new TextureRegion(new Texture(Gdx.files.internal("blocks/t_brick.png"))));
-        texturesMap.put(6, new TextureRegion(new Texture(Gdx.files.internal("blocks/z_brick.png"))));
+        texturesMap.put(0, new TextureRegion(new Texture(Gdx.files.internal("blocks/i.png"))));
+        texturesMap.put(1, new TextureRegion(new Texture(Gdx.files.internal("blocks/o.png"))));
+        texturesMap.put(2, new TextureRegion(new Texture(Gdx.files.internal("blocks/j.png"))));
+        texturesMap.put(3, new TextureRegion(new Texture(Gdx.files.internal("blocks/L.png"))));
+        texturesMap.put(4, new TextureRegion(new Texture(Gdx.files.internal("blocks/s.png"))));
+        texturesMap.put(5, new TextureRegion(new Texture(Gdx.files.internal("blocks/t.png"))));
+        texturesMap.put(6, new TextureRegion(new Texture(Gdx.files.internal("blocks/z.png"))));
     }
 }

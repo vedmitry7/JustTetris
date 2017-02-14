@@ -39,7 +39,7 @@ public class GameInfo extends Actor {
         font.draw(batch, "Next: ", GAME_FIELD_WIDTH-140, GAME_FIELD_HEIGHT + 20f);
         sprite = new Sprite(texturesMap.get(figure.getNextShape()));
         sprite.setPosition(GAME_FIELD_WIDTH-60,GAME_FIELD_HEIGHT);
-        sprite.setSize(45,30);
+        sprite.setSize(60,30);
         sprite.draw(batch);
     }
 
