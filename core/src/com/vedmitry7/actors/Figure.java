@@ -2,7 +2,9 @@ package com.vedmitry7.actors;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.vedmitry7.enums.GameState;
 import com.vedmitry7.utils.Constants;
+import com.vedmitry7.utils.GameManager;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -194,7 +196,8 @@ public class Figure extends Actor {
     @Override
     public void act(float delta) {
         super.act(delta);
-
+        if(GameManager.getGameState()== GameState.PAUSED)
+            return;
         currentTimeToFrame += delta;
         if (currentTimeToFrame > frameTime) {
             if (this.isTouchGround()) {

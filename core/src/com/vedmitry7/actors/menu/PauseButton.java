@@ -1,31 +1,32 @@
 package com.vedmitry7.actors.menu;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
-public class PauseButton extends Button {
+public class PauseButton extends ImageButton {
 
     TextureAtlas textureAtlas;
     Skin skin;
     Texture texture;
     Drawable drawable;
 
-    public PauseButton() {
-        texture = new Texture(Gdx.files.internal("pause_button.png"));
-        drawable = new TextureRegionDrawable(new TextureRegion(texture));
-        loadTextureRegion();
-        this.setPosition(225f, 962.5f);
+    public PauseButton(Drawable imageUp) {
+        super(imageUp);
+        setBounds(0,0,60,60);
+        setPosition(480/2-15,960-15);
+        addListener(new ClickListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                System.out.println("eeeeeeeeeeaaaaaaahhh");
+                return true;
+            }
+        });
     }
 
-    protected void loadTextureRegion() {
-        ButtonStyle style = new ButtonStyle();
-        style.up = drawable;
-        setStyle(style);
-    }
+
 }
