@@ -34,4 +34,7 @@ public class AssetsManager {
         texturesMap.put(5, new TextureRegion(new Texture(Gdx.files.internal("blocks/t.png"))));
         texturesMap.put(6, new TextureRegion(new Texture(Gdx.files.internal("blocks/z.png"))));
     }
+
+
+
 }
