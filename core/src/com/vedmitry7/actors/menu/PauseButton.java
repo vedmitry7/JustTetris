@@ -7,8 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.vedmitry7.enums.GameState;
-import com.vedmitry7.utils.GameManager;
 
 public class PauseButton extends ImageButton {
 
@@ -32,10 +30,6 @@ public class PauseButton extends ImageButton {
     @Override
     public void act(float delta) {
         super.act(delta);
-        System.out.println("act");
-        if (GameManager.getGameState() == GameState.PAUSED) {
-            remove();
-        }
-        else reset();
+
     }
 }

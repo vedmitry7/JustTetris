@@ -2,11 +2,8 @@ package com.vedmitry7.stages;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -21,6 +18,7 @@ import com.vedmitry7.actors.Field;
 import com.vedmitry7.actors.Figure;
 import com.vedmitry7.actors.GameInfo;
 import com.vedmitry7.actors.LineDrawer;
+import com.vedmitry7.actors.menu.ButtonManager;
 import com.vedmitry7.actors.menu.PauseButton;
 import com.vedmitry7.enums.GameState;
 import com.vedmitry7.utils.Constants;
@@ -41,22 +39,30 @@ public class GameStage extends Stage {
     TextureRegion region;
     PauseButton pauseButton;
     Skin skin;
-
+    TextButton continueButton, exitButton, menuButton;
+    Texture texture;
     private OrthographicCamera camera;
 
     public GameStage(Viewport v) {
         super();
         this.setViewport(v);
-      //  setUpCamera();
         initGameObject();
         initButton();
+        setMenuVisible(false);
+       // initBackground();
+    }
+
+    private void initBackground() {
+        texture = new Texture(Gdx.files.internal("bg_white.png"));
+        skin = new Skin();
+        skin.add("bg", texture);
 
     }
 
 
     private void initButton() {
 
-        Texture texture = new Texture(Gdx.files.internal("pause_button.png"));
+        texture = new Texture(Gdx.files.internal("pause_button.png"));
         Drawable drawable = new TextureRegionDrawable(new TextureRegion(texture));
 
         pauseButton = new PauseButton(drawable);
@@ -65,8 +71,11 @@ public class GameStage extends Stage {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 if(GameManager.getGameState()== GameState.PAUSED)
                     GameManager.setGameState(GameState.RUNNING);
-                else
+                else {
                     GameManager.setGameState(GameState.PAUSED);
+                    setMenuVisible(true);
+                    pauseButton.setVisible(false);
+                }
                 return true;
             }
         });
@@ -74,50 +83,51 @@ public class GameStage extends Stage {
 
         region = new TextureRegion(texture);
 
-      /*  ImageButton button = new ImageButton(drawable);
-        button.addListener(new ClickListener(){
+        continueButton = ButtonManager.getTextButton("Continue");
+        continueButton.setSize(150,75);
+        continueButton.setPosition(165, 450);
+        continueButton.addListener(new ClickListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                if(GameManager.getGameState()==GameState.PAUSED)
                     GameManager.setGameState(GameState.RUNNING);
-                else
-                GameManager.setGameState(GameState.PAUSED);
+                    setMenuVisible(false);
+                    pauseButton.setVisible(true);
                 return true;
             }
         });
-        button.setBounds(0,0,60,60);
-        button.setPosition(480/2-15,960-15);
-        addActor(button);*/
+        addActor(continueButton);
 
-        skin = new Skin();
-        Pixmap pixmap = new Pixmap(100, 100, Pixmap.Format.RGBA8888);
-        pixmap.setColor(Color.GREEN);
+        menuButton = ButtonManager.getTextButton("Main menu");
+        menuButton.setSize(150,75);
+        menuButton.setPosition(165, 350);
+        menuButton.addListener(new ClickListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
-        pixmap.fill();
+                return true;
+            }
+        });
 
-        skin.add("white", new Texture(pixmap));
+        addActor(menuButton);
 
-        // Store the default libgdx font under the name "default".
-        BitmapFont bfont=new BitmapFont();
+        exitButton = ButtonManager.getTextButton("Exit");
+        exitButton.setSize(150,75);
+        exitButton.setPosition(165, 250);
+        exitButton.addListener(new ClickListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                Gdx.app.exit();
+                return true;
+            }
+        });
+        addActor(exitButton);
 
-        skin.add("default",bfont);
+    }
 
-        // Configure a TextButtonStyle and name it "default". Skin resources are stored by type, so this doesn't overwrite the font.
-        TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
-        textButtonStyle.up = skin.newDrawable("white", Color.DARK_GRAY);
-        textButtonStyle.down = skin.newDrawable("white", Color.DARK_GRAY);
-        textButtonStyle.checked = skin.newDrawable("white", Color.BLUE);
-        textButtonStyle.over = skin.newDrawable("white", Color.LIGHT_GRAY);
-
-        textButtonStyle.font = skin.getFont("default");
-
-        skin.add("default", textButtonStyle);
-
-        // Create a button with the "default" TextButtonStyle. A 3rd parameter can be used to specify a name other than "default".
-        final TextButton textButton=new TextButton("PLAY",textButtonStyle);
-        textButton.setPosition(200, 200);
-        addActor(textButton);
-
+    private void setMenuVisible(boolean visible){
+        continueButton.setVisible(visible);
+        exitButton.setVisible(visible);
+        menuButton.setVisible(visible);
     }
 
     private void initGameObject() {
@@ -149,11 +159,15 @@ public class GameStage extends Stage {
 
     @Override
     public void draw() {
+      /*  getBatch().begin();
+        getBatch().draw(skin.getRegion("bg"),0,0,540,990);
+        getBatch().end();*/
         super.draw();
     }
 
     @Override
     public void act(float delta) {
         super.act(delta);
+
     }
 }
