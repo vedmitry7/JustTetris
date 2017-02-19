@@ -46,6 +46,7 @@ public class GameStage extends Stage {
     public GameStage(Viewport v) {
         super();
         this.setViewport(v);
+
         initGameObject();
         initButton();
         setMenuVisible(false);
@@ -56,7 +57,6 @@ public class GameStage extends Stage {
         texture = new Texture(Gdx.files.internal("bg_white.png"));
         skin = new Skin();
         skin.add("bg", texture);
-
     }
 
 
@@ -81,8 +81,6 @@ public class GameStage extends Stage {
         });
         addActor(pauseButton);
 
-        region = new TextureRegion(texture);
-
         continueButton = ButtonManager.getTextButton("Continue");
         continueButton.setSize(150,75);
         continueButton.setPosition(165, 450);
@@ -103,11 +101,10 @@ public class GameStage extends Stage {
         menuButton.addListener(new ClickListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-
+                GameManager.setGameState(GameState.MENU);
                 return true;
             }
         });
-
         addActor(menuButton);
 
         exitButton = ButtonManager.getTextButton("Exit");
@@ -121,7 +118,6 @@ public class GameStage extends Stage {
             }
         });
         addActor(exitButton);
-
     }
 
     private void setMenuVisible(boolean visible){

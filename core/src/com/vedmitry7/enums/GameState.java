@@ -21,6 +21,6 @@ public enum GameState {
     RUNNING,
     PAUSED,
     OVER,
-    ABOUT
+    MENU
 
 }

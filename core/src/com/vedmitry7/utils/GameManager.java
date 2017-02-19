@@ -5,7 +5,7 @@ import com.vedmitry7.enums.GameState;
 
 public class GameManager {
     static  {
-        gameState = GameState.RUNNING;
+        gameState = GameState.MENU;
     }
     static GameState gameState;
 
